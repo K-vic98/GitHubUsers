@@ -14,9 +14,9 @@
 		5712E86B283291830009007F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5712E86A283291830009007F /* Assets.xcassets */; };
 		5712E86E283291830009007F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5712E86C283291830009007F /* LaunchScreen.storyboard */; };
 		573994932832B20F006DBAD9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573994922832B20F006DBAD9 /* LoadingView.swift */; };
+		577A68582832CD3D0005DE79 /* UsersRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A68572832CD3D0005DE79 /* UsersRepo.swift */; };
 		57B29BA128329F8100F85C7F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA028329F8100F85C7F /* Models.swift */; };
-		57B29BA428329FF500F85C7F /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA328329FF500F85C7F /* UserRequest.swift */; };
-		57B29BA62832A01A00F85C7F /* UsersServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA52832A01A00F85C7F /* UsersServices.swift */; };
+		57B29BA428329FF500F85C7F /* GitHubUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA328329FF500F85C7F /* GitHubUsers.swift */; };
 		57B29BA82832A06A00F85C7F /* UserPreviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA72832A06A00F85C7F /* UserPreviewsPresenter.swift */; };
 		57B29BAE2832A95500F85C7F /* UserPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BAC2832A95500F85C7F /* UserPreviewCell.swift */; };
 		57B29BAF2832A95500F85C7F /* UserPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57B29BAD2832A95500F85C7F /* UserPreviewCell.xib */; };
@@ -32,9 +32,9 @@
 		5712E86D283291830009007F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5712E86F283291830009007F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		573994922832B20F006DBAD9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		577A68572832CD3D0005DE79 /* UsersRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepo.swift; sourceTree = "<group>"; };
 		57B29BA028329F8100F85C7F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		57B29BA328329FF500F85C7F /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
-		57B29BA52832A01A00F85C7F /* UsersServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersServices.swift; sourceTree = "<group>"; };
+		57B29BA328329FF500F85C7F /* GitHubUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsers.swift; sourceTree = "<group>"; };
 		57B29BA72832A06A00F85C7F /* UserPreviewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewsPresenter.swift; sourceTree = "<group>"; };
 		57B29BAC2832A95500F85C7F /* UserPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewCell.swift; sourceTree = "<group>"; };
 		57B29BAD2832A95500F85C7F /* UserPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPreviewCell.xib; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 		57B29BA228329FC300F85C7F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				57B29BA52832A01A00F85C7F /* UsersServices.swift */,
-				57B29BA328329FF500F85C7F /* UserRequest.swift */,
+				57B29BA328329FF500F85C7F /* GitHubUsers.swift */,
+				577A68572832CD3D0005DE79 /* UsersRepo.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -154,7 +154,6 @@
 				56055E26BEDC7E6C8A07A9D2 /* Pods-GitHubUsers.debug.xcconfig */,
 				E295D4E033979975E24011E6 /* Pods-GitHubUsers.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -277,11 +276,11 @@
 				57B29BAE2832A95500F85C7F /* UserPreviewCell.swift in Sources */,
 				5712E866283291830009007F /* UserPreviewsView.swift in Sources */,
 				5712E862283291830009007F /* AppDelegate.swift in Sources */,
-				57B29BA62832A01A00F85C7F /* UsersServices.swift in Sources */,
 				5712E864283291830009007F /* SceneDelegate.swift in Sources */,
-				57B29BA428329FF500F85C7F /* UserRequest.swift in Sources */,
+				57B29BA428329FF500F85C7F /* GitHubUsers.swift in Sources */,
 				57B29BA128329F8100F85C7F /* Models.swift in Sources */,
 				573994932832B20F006DBAD9 /* LoadingView.swift in Sources */,
+				577A68582832CD3D0005DE79 /* UsersRepo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
