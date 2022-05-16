@@ -1,0 +1,50 @@
+PODS:
+  - Alamofire (5.6.1)
+  - Kingfisher (7.2.1)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - PromiseKit (6.17.1):
+    - PromiseKit/CorePromise (= 6.17.1)
+    - PromiseKit/Foundation (= 6.17.1)
+    - PromiseKit/UIKit (= 6.17.1)
+  - PromiseKit/CorePromise (6.17.1)
+  - PromiseKit/Foundation (6.17.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.17.1):
+    - PromiseKit/CorePromise
+  - Reusable (4.1.2):
+    - Reusable/Storyboard (= 4.1.2)
+    - Reusable/View (= 4.1.2)
+  - Reusable/Storyboard (4.1.2)
+  - Reusable/View (4.1.2)
+  - TinyConstraints (4.0.2)
+
+DEPENDENCIES:
+  - Kingfisher
+  - Moya
+  - PromiseKit
+  - Reusable
+  - TinyConstraints
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - Moya
+    - PromiseKit
+    - Reusable
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  Kingfisher: 7c084bebf7d548c623ad41bcf765fb200efed369
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  PromiseKit: ee485df3d4dc570594d7e7aecae6352697dc6a4c
+  Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
+  TinyConstraints: 7b7ccc0c485bb3bb47082138ff28bc33cd49897f
+
+PODFILE CHECKSUM: 3f4d3786284a968cadb4f221530546b64ca510d5
+
+COCOAPODS: 1.11.3
