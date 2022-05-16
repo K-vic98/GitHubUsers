@@ -3,10 +3,13 @@ import UIKit
 class UserPreviewsViewController: UIViewController {
     lazy var userPreviewsPresenter = UserPreviewsPresenter(userPreviewsService: UserPreviewsService(), userPreviewsView: self)
     
+    private let tableView = UITableView()
     private var userPreviews = [UserPreview]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
     }
 }
 

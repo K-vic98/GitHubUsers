@@ -16,6 +16,8 @@
 		57B29BA428329FF500F85C7F /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA328329FF500F85C7F /* UserRequest.swift */; };
 		57B29BA62832A01A00F85C7F /* UsersServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA52832A01A00F85C7F /* UsersServices.swift */; };
 		57B29BA82832A06A00F85C7F /* UserPreviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA72832A06A00F85C7F /* UserPreviewsPresenter.swift */; };
+		57B29BAE2832A95500F85C7F /* UserPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BAC2832A95500F85C7F /* UserPreviewCell.swift */; };
+		57B29BAF2832A95500F85C7F /* UserPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57B29BAD2832A95500F85C7F /* UserPreviewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		57B29BA328329FF500F85C7F /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		57B29BA52832A01A00F85C7F /* UsersServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersServices.swift; sourceTree = "<group>"; };
 		57B29BA72832A06A00F85C7F /* UserPreviewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewsPresenter.swift; sourceTree = "<group>"; };
+		57B29BAC2832A95500F85C7F /* UserPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewCell.swift; sourceTree = "<group>"; };
+		57B29BAD2832A95500F85C7F /* UserPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPreviewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 		57B29B9E28329DE500F85C7F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				57B29BA92832A8FC00F85C7F /* UserPreviewCell */,
 				5712E865283291830009007F /* UserPreviewsView.swift */,
 			);
 			path = View;
@@ -106,6 +111,15 @@
 				57B29BA328329FF500F85C7F /* UserRequest.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		57B29BA92832A8FC00F85C7F /* UserPreviewCell */ = {
+			isa = PBXGroup;
+			children = (
+				57B29BAC2832A95500F85C7F /* UserPreviewCell.swift */,
+				57B29BAD2832A95500F85C7F /* UserPreviewCell.xib */,
+			);
+			path = UserPreviewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +182,7 @@
 			files = (
 				5712E86E283291830009007F /* LaunchScreen.storyboard in Resources */,
 				5712E86B283291830009007F /* Assets.xcassets in Resources */,
+				57B29BAF2832A95500F85C7F /* UserPreviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57B29BA82832A06A00F85C7F /* UserPreviewsPresenter.swift in Sources */,
+				57B29BAE2832A95500F85C7F /* UserPreviewCell.swift in Sources */,
 				5712E866283291830009007F /* UserPreviewsView.swift in Sources */,
 				5712E862283291830009007F /* AppDelegate.swift in Sources */,
 				57B29BA62832A01A00F85C7F /* UsersServices.swift in Sources */,
