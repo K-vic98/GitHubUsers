@@ -1,4 +1,5 @@
 import UIKit
+import TinyConstraints
 
 class UserPreviewsViewController: UIViewController {
     lazy var userPreviewsPresenter = UserPreviewsPresenter(userPreviewsService: UserPreviewsService(), userPreviewsView: self)
@@ -10,10 +11,19 @@ class UserPreviewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        setup()
         
         tableView.dataSource = self
-        // register tableViewCell
+    }
+    
+    private func setup() {
+        view.backgroundColor = .systemBackground
+        
+        view.addSubview(tableView)
+        view.addSubview(loadingView)
+        
+        tableView.edgesToSuperview(usingSafeArea: true)
+        loadingView.edgesToSuperview(usingSafeArea: true)
     }
 }
 

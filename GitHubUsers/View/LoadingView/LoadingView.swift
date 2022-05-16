@@ -1,11 +1,19 @@
 import UIKit
+import TinyConstraints
 
 final class LoadingView: UIView {
-    let activityIndicator = UIActivityIndicatorView()
+    private let activityIndicator = UIActivityIndicatorView(style: .medium)
     
     override func layoutSubviews() {
-        activityIndicator.hidesWhenStopped = true
+        setup()
+    }
+    
+    private func setup() {
+        backgroundColor = .systemBackground
         
         addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        activityIndicator.edgesToSuperview(usingSafeArea: true)
     }
 }
