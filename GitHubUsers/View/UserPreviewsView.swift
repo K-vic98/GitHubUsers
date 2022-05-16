@@ -10,6 +10,7 @@ class UserPreviewsViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        // register tableViewCell
     }
 }
 
