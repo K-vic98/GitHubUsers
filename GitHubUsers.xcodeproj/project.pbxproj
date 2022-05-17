@@ -14,6 +14,7 @@
 		5712E86B283291830009007F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5712E86A283291830009007F /* Assets.xcassets */; };
 		5712E86E283291830009007F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5712E86C283291830009007F /* LaunchScreen.storyboard */; };
 		573994932832B20F006DBAD9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573994922832B20F006DBAD9 /* LoadingView.swift */; };
+		574CA86B28332AD2005BF94C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574CA86A28332AD2005BF94C /* Constants.swift */; };
 		577A68582832CD3D0005DE79 /* UsersRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577A68572832CD3D0005DE79 /* UsersRepo.swift */; };
 		57B29BA128329F8100F85C7F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA028329F8100F85C7F /* Models.swift */; };
 		57B29BA428329FF500F85C7F /* GitHubUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B29BA328329FF500F85C7F /* GitHubUsers.swift */; };
@@ -32,6 +33,7 @@
 		5712E86D283291830009007F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5712E86F283291830009007F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		573994922832B20F006DBAD9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		574CA86A28332AD2005BF94C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		577A68572832CD3D0005DE79 /* UsersRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepo.swift; sourceTree = "<group>"; };
 		57B29BA028329F8100F85C7F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		57B29BA328329FF500F85C7F /* GitHubUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsers.swift; sourceTree = "<group>"; };
@@ -75,12 +77,10 @@
 		5712E860283291830009007F /* GitHubUsers */ = {
 			isa = PBXGroup;
 			children = (
-				5712E861283291830009007F /* AppDelegate.swift */,
-				5712E863283291830009007F /* SceneDelegate.swift */,
+				574CA869283329CF005BF94C /* AppDelegate */,
 				57B29B9D28329DDF00F85C7F /* Model */,
 				57B29B9E28329DE500F85C7F /* View */,
 				57B29B9F28329DEC00F85C7F /* Presenter */,
-				57B29BA228329FC300F85C7F /* Network */,
 				5712E86A283291830009007F /* Assets.xcassets */,
 				5712E86C283291830009007F /* LaunchScreen.storyboard */,
 				5712E86F283291830009007F /* Info.plist */,
@@ -96,10 +96,21 @@
 			path = LoadingView;
 			sourceTree = "<group>";
 		};
+		574CA869283329CF005BF94C /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				5712E861283291830009007F /* AppDelegate.swift */,
+				5712E863283291830009007F /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
 		57B29B9D28329DDF00F85C7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				57B29BA028329F8100F85C7F /* Models.swift */,
+				574CA86A28332AD2005BF94C /* Constants.swift */,
+				57B29BA228329FC300F85C7F /* Network */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,8 +136,8 @@
 		57B29BA228329FC300F85C7F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				57B29BA328329FF500F85C7F /* GitHubUsers.swift */,
 				577A68572832CD3D0005DE79 /* UsersRepo.swift */,
+				57B29BA328329FF500F85C7F /* GitHubUsers.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -277,6 +288,7 @@
 				5712E866283291830009007F /* UserPreviewsView.swift in Sources */,
 				5712E862283291830009007F /* AppDelegate.swift in Sources */,
 				5712E864283291830009007F /* SceneDelegate.swift in Sources */,
+				574CA86B28332AD2005BF94C /* Constants.swift in Sources */,
 				57B29BA428329FF500F85C7F /* GitHubUsers.swift in Sources */,
 				57B29BA128329F8100F85C7F /* Models.swift in Sources */,
 				573994932832B20F006DBAD9 /* LoadingView.swift in Sources */,

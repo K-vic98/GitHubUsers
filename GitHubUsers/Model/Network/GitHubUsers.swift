@@ -1,7 +1,6 @@
 import Moya
 
 enum GitHubUsers {
-    case getTotalUsersCount
     case getUsersPreview(lastLoadedUser: Int, usersCount: Int)
     case getUser(userName: String)
 }
@@ -13,8 +12,6 @@ extension GitHubUsers: TargetType {
     
     var path: String {
         switch self {
-            case .getTotalUsersCount:
-                return "/search/users"
             case .getUsersPreview:
                 return "/users"
             case .getUser(let userName):
@@ -24,14 +21,12 @@ extension GitHubUsers: TargetType {
     
     var method: Moya.Method {
         switch self {
-            case .getTotalUsersCount, .getUsersPreview, .getUser: return .get
+            case .getUsersPreview, .getUser: return .get
         }
     }
     
     var task: Task {
         switch self {
-            case .getTotalUsersCount:
-                return .requestParameters(parameters: ["q": "type:user"], encoding: URLEncoding.queryString)
             case .getUsersPreview(let lastLoadedUser, let usersCount):
                 return .requestParameters(parameters: ["since": lastLoadedUser, "per_page": usersCount], encoding: URLEncoding.queryString)
             case .getUser: return .requestPlain

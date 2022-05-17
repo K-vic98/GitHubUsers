@@ -5,10 +5,10 @@ final class LoadingView: UIView {
     private let activityIndicator = UIActivityIndicatorView(style: .medium)
     
     override func layoutSubviews() {
-        setup()
+        makeInitialSetup()
     }
     
-    private func setup() {
+    private func makeInitialSetup() {
         backgroundColor = .systemBackground
         
         addSubview(activityIndicator)

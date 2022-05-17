@@ -1,20 +1,13 @@
 import Moya
 import PromiseKit
 
-fileprivate let numberOfUsersPerRequest = 30
-
-protocol UsersRepo {
-    func getUsers() -> Promise<[UserPreview]>
-    func getTotalUsersCount() -> Promise<Int>
-}
-
 final class UserRepoImplementation: UsersRepo {
     
     private let provider = MoyaProvider<GitHubUsers>()
     
-    func getUsers() -> Promise<[UserPreview]> {
+    func getUsers(lastUploadedUser: Int) -> Promise<[UserPreview]> {
         return Promise<[UserPreview]> { [weak self] seal in
-            self?.provider.request(.getUsersPreview(lastLoadedUser: 0, usersCount: numberOfUsersPerRequest)) { result in
+            self?.provider.request(.getUsersPreview(lastLoadedUser: lastUploadedUser, usersCount: numberOfUsersPerRequest)) { result in
                 switch result {
                     case .success(let response):
                         do {
@@ -32,18 +25,17 @@ final class UserRepoImplementation: UsersRepo {
         }
     }
     
-    func getTotalUsersCount() -> Promise<Int> {
-        return Promise<Int> { [weak self] seal in
-            self?.provider.request(.getTotalUsersCount) { result in
+    func getUser(name: String) -> Promise<User> {
+        return Promise<User> { [weak self] seal in
+            self?.provider.request(.getUser(userName: name)) { result in
                 switch result {
                     case .success(let response):
                         do {
                             let jsonDecoder = JSONDecoder()
                             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                            let userData = try jsonDecoder.decode(UsersData.self, from: response.data)
-                            seal.fulfill(userData.totalCount)
+                            let user = try jsonDecoder.decode(User.self, from: response.data)
+                            seal.fulfill(user)
                         } catch {
-                            print(error)
                             seal.reject(error)
                         }
                     case .failure(let error):
@@ -52,4 +44,9 @@ final class UserRepoImplementation: UsersRepo {
             }
         }
     }
+}
+
+protocol UsersRepo {
+    func getUsers(lastUploadedUser: Int) -> Promise<[UserPreview]>
+    func getUser(name: String) -> Promise<User>
 }

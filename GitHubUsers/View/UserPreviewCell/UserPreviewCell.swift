@@ -1,6 +1,6 @@
 import UIKit
-import Kingfisher
 import Reusable
+import Kingfisher
 
 final class UserPreviewCell: UITableViewCell, NibReusable {
     @IBOutlet private weak var avatar: UIImageView!
@@ -35,7 +35,7 @@ final class UserPreviewCell: UITableViewCell, NibReusable {
     }
 }
 
-final class ActivityPlaceholder: Placeholder {
+final fileprivate class ActivityPlaceholder: Placeholder {
     func add(to imageView: KFCrossPlatformImageView) {
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
