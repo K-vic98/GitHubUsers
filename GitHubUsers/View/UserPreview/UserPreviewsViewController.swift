@@ -2,6 +2,7 @@ import UIKit
 import TinyConstraints
 
 final class UserPreviewsViewController: UITableViewController {
+    
     private lazy var userPreviewsPresenter = UserPreviewsPresenter(userPreviewsView: self)
     
     private let loadingIndicator = UIActivityIndicatorView(style: .medium)
@@ -105,7 +106,7 @@ extension UserPreviewsViewController: UserPreviewsView {
     }
     
     func showUserDescription(userNumber: Int) {
-        let userDescriptionController = UserDescriptionViewController() // переделать
+        let userDescriptionController = UserDescriptionViewController()
         userDescriptionController.currentUserName = userPreviews[userNumber].login
         navigationController?.pushViewController(userDescriptionController, animated: true)
     }

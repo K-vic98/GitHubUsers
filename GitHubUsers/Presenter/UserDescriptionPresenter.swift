@@ -8,7 +8,11 @@ final class UserDescriptionPresenter {
     }
     
     func needDataUpdate(for login: String) {
-        guard let usersRepo = usersRepo else { return }
+        
+        guard let usersRepo = usersRepo else {
+            print("Missing userRepo")
+            return
+        }
         
         usersRepo.getUser(name: login)
             .done { [weak self] userDescription in

@@ -28,7 +28,9 @@ extension GitHubUsers: TargetType {
     var task: Task {
         switch self {
             case .getUsersPreview(let lastLoadedUser, let usersCount):
-                return .requestParameters(parameters: ["since": lastLoadedUser, "per_page": usersCount], encoding: URLEncoding.queryString)
+                return .requestParameters(
+                    parameters: ["since": lastLoadedUser, "per_page": usersCount],
+                    encoding: URLEncoding.queryString)
             case .getUser: return .requestPlain
         }
     }

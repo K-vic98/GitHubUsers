@@ -10,17 +10,19 @@ final class UserPreviewsPresenter {
     private var getUsersRequests = [Int: Promise<[UserPreview]>]()
     
     init(userPreviewsView: UserPreviewsView) {
-        let usersRepo = container.resolve(UsersRepo.self)
-        
-        self.usersRepo = usersRepo
+        self.usersRepo = container.resolve(UsersRepo.self)
         self.userPreviewsView = userPreviewsView
     }
     
     func needDataUpdate() {
         guard getUsersRequests[lastUploadedUserID] == nil else { return }
         
-        let promise = usersRepo?.getUsers(lastUploadedUser: lastUploadedUserID)
-        guard let promise = promise else { return }
+        guard let usersRepo = usersRepo else {
+            print("Missing userRepo")
+            return
+        }
+        
+        let promise = usersRepo.getUsers(lastUploadedUser: lastUploadedUserID)
         
         getUsersRequests[lastUploadedUserID] = promise
         
