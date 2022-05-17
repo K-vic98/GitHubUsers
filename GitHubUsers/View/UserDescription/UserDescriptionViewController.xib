@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserDescriptionViewController" customModule="GitHubUsers" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarImage" destination="sPk-dw-e9v" id="t5D-MC-8qV"/>
+                <outlet property="companyLabel" destination="KaQ-8Y-qBE" id="0yX-T3-mlY"/>
+                <outlet property="emailLabel" destination="kBA-B3-E4k" id="BWf-oq-00b"/>
+                <outlet property="followersLabel" destination="amh-r1-OE4" id="1RV-Wf-noK"/>
+                <outlet property="followingLabel" destination="jaA-I3-GyA" id="Wzu-5b-ZbX"/>
+                <outlet property="nameLabel" destination="uxT-5Q-BXh" id="sFP-kf-FBk"/>
+                <outlet property="view" destination="iN0-l3-epB" id="eiy-a4-NT2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="iCL-iP-wZk">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sPk-dw-e9v" userLabel="Avatar">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="350" id="AM1-O9-44L"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👤 Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxT-5Q-BXh" userLabel="Name">
+                            <rect key="frame" x="0.0" y="419.5" width="87" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✉️ Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBA-B3-E4k" userLabel="Email">
+                            <rect key="frame" x="0.0" y="513" width="82" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💻 Company:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaQ-8Y-qBE" userLabel="Company">
+                            <rect key="frame" x="0.0" y="607" width="119" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👀 Following:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaA-I3-GyA" userLabel="Following">
+                            <rect key="frame" x="0.0" y="700.5" width="118" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👥 Followers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amh-r1-OE4" userLabel="Followers">
+                            <rect key="frame" x="0.0" y="794" width="118" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="sPk-dw-e9v" firstAttribute="width" secondItem="iCL-iP-wZk" secondAttribute="width" id="oDw-dr-tVK"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iCL-iP-wZk" secondAttribute="bottom" id="JZ5-2x-6Kp"/>
+                <constraint firstItem="iCL-iP-wZk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="L5D-tf-etL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iCL-iP-wZk" secondAttribute="trailing" id="h8Z-L3-vKX"/>
+                <constraint firstItem="iCL-iP-wZk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hRl-aQ-rlx"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="109"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
