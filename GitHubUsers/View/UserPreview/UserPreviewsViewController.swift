@@ -2,10 +2,9 @@ import UIKit
 import TinyConstraints
 
 final class UserPreviewsViewController: UITableViewController {
-    private lazy var userPreviewsPresenter = UserPreviewsPresenter(usersRepo: container.resolve(UsersRepo.self)!,
-                                                                   userPreviewsView: self)
+    private lazy var userPreviewsPresenter = UserPreviewsPresenter(userPreviewsView: self)
     
-    private let loadingView = LoadingView()
+    private let loadingIndicator = UIActivityIndicatorView(style: .medium)
     private var userPreviews = [UserPreview]()
     
     override func viewDidLoad() {
@@ -19,7 +18,7 @@ final class UserPreviewsViewController: UITableViewController {
         
         tableView.register(cellType: UserPreviewCell.self)
         
-        userPreviewsPresenter.getUsers()
+        userPreviewsPresenter.needDataUpdate()
     }
     
     private func makeInitialSetup() {
@@ -30,26 +29,27 @@ final class UserPreviewsViewController: UITableViewController {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        tableView.rowHeight = 100
+        tableView.rowHeight = cellHeight
         
-        view.addSubview(loadingView)
-        loadingView.edgesToSuperview(usingSafeArea: true)
+        view.addSubview(loadingIndicator)
+        loadingIndicator.edgesToSuperview(usingSafeArea: true)
+        loadingIndicator.hidesWhenStopped = true
     }
     
     @objc private func refresh() {
-        userPreviews.removeAll()
-        userPreviewsPresenter.reset()
-        tableView.refreshControl?.endRefreshing()
+        userPreviewsPresenter.needReset()
     }
 }
 
 extension UserPreviewsViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userPreviewsCount
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let userPreviewCell: UserPreviewCell = tableView.dequeueReusableCell(for: indexPath)
+        
         if isLoadingCell(for: indexPath) {
             userPreviewCell.configure(with: .none)
         } else {
@@ -61,43 +61,53 @@ extension UserPreviewsViewController {
 }
 
 extension UserPreviewsViewController {
+    
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
-        {
-            let userDescriptionController = UserDescriptionViewController()
-            userDescriptionController.currentUserName = userPreviews[indexPath.row].login
-            navigationController?.pushViewController(userDescriptionController, animated: true)
-        }
+    {
+        userPreviewsPresenter.needShowUserDescription(userNumber: indexPath.row)
+    }
 }
 
 extension UserPreviewsViewController: UITableViewDataSourcePrefetching {
+    
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
-            userPreviewsPresenter.getUsers()
+            userPreviewsPresenter.needDataUpdate()
         }
     }
 }
 
 extension UserPreviewsViewController: UserPreviewsView {
-    func reportAboutMistake(mistake: String) {
-        let alert = UIAlertController(title: "Warning", message: mistake, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default))
-        
-        self.present(alert, animated: true)
+    
+    func reportAboutError(error: String) {
+        self.showError(error: error)
     }
     
-    func setUsers(newUsers: [UserPreview]) {
+    func setUsersData(newUsers: [UserPreview]) {
         userPreviews += newUsers
+    }
+    
+    func resetUsersData() {
+        userPreviews.removeAll()
+        tableView.refreshControl?.endRefreshing()
+        userPreviewsPresenter.needDataUpdate()
     }
     
     func updatePresentation(with newIndexPathsToReload: [IndexPath]?) {
         guard let newIndexPathsToReload = newIndexPathsToReload else {
-            loadingView.removeFromSuperview()
+            loadingIndicator.stopAnimating()
             tableView.reloadData()
             return
         }
         
         let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
         tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+    }
+    
+    func showUserDescription(userNumber: Int) {
+        let userDescriptionController = UserDescriptionViewController() // переделать
+        userDescriptionController.currentUserName = userPreviews[userNumber].login
+        navigationController?.pushViewController(userDescriptionController, animated: true)
     }
 }
 

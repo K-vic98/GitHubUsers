@@ -1,24 +1,25 @@
 final class UserDescriptionPresenter {
-    private let usersRepo: UsersRepo
+    private let usersRepo: UsersRepo?
     private weak var userDescriptionView: UserDescriptionView?
     
-    init(usersRepo: UsersRepo, userDescriptionView: UserDescriptionView) {
-        self.usersRepo = usersRepo
+    init(userDescriptionView: UserDescriptionView) {
+        self.usersRepo = container.resolve(UsersRepo.self)
         self.userDescriptionView = userDescriptionView
     }
     
-    func getUser(for login: String) {
-        print(login)
+    func needDataUpdate(for login: String) {
+        guard let usersRepo = usersRepo else { return }
+        
         usersRepo.getUser(name: login)
             .done { [weak self] userDescription in
-                self?.userDescriptionView?.setUser(newUser: userDescription)
+                self?.userDescriptionView?.setAndUpdateUserData(newUser: userDescription)
             }
             .catch { [weak self] error in
-                self?.userDescriptionView?.reportAboutMistake(mistake: error.localizedDescription)
+                self?.userDescriptionView?.reportAboutError(error: error.localizedDescription)
             }
     }
 }
 
 protocol UserDescriptionView: ErrorView {
-    func setUser(newUser: UserDescription)
+    func setAndUpdateUserData(newUser: UserDescription)
 }

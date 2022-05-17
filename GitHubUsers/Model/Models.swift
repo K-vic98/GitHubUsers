@@ -12,7 +12,7 @@ struct UserPreview: Decodable {
 
 struct UserDescription: Decodable {
     let avatarUrl: URL
-    let name: String
+    let name: String?
     let email: String?
     let company: String?
     let following: Int

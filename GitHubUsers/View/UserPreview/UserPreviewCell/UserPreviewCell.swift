@@ -14,11 +14,6 @@ final class UserPreviewCell: UITableViewCell, NibReusable {
         configure(with: .none)
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool)
-    {
-        super.setSelected(selected, animated: animated)
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         activityIndicator.hidesWhenStopped = true
@@ -26,6 +21,8 @@ final class UserPreviewCell: UITableViewCell, NibReusable {
     
     func configure(with userPreview: UserPreview?) {
         guard let userPreview = userPreview else {
+            accessoryType = .none
+            
             avatarImage.image = .none
             loginLabel.text = ""
             idLabel.text = ""
@@ -34,6 +31,7 @@ final class UserPreviewCell: UITableViewCell, NibReusable {
         }
         
         accessoryType = .detailButton
+        
         avatarImage.kf.setImage(with: userPreview.avatarUrl)
         loginLabel.text = userPreview.login
         idLabel.text = String(userPreview.id)
