@@ -1,10 +1,10 @@
 import UIKit
 import TinyConstraints
 
-final class UserPreviewsViewController: UIViewController {
-    lazy var userPreviewsPresenter = UserPreviewsPresenter(usersRepo: UserRepoImplementation(), userPreviewsView: self)
+final class UserPreviewsViewController: UITableViewController {
+    private lazy var userPreviewsPresenter = UserPreviewsPresenter(usersRepo: container.resolve(UsersRepo.self)!,
+                                                                   userPreviewsView: self)
     
-    private let tableView = UITableView()
     private let loadingView = LoadingView()
     private var userPreviews = [UserPreview]()
     
@@ -14,6 +14,7 @@ final class UserPreviewsViewController: UIViewController {
         makeInitialSetup()
         
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.prefetchDataSource = self
         
         tableView.register(cellType: UserPreviewCell.self)
@@ -24,23 +25,30 @@ final class UserPreviewsViewController: UIViewController {
     private func makeInitialSetup() {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Users"
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = appColor
         
-        view.addSubview(tableView)
-        tableView.edgesToSuperview(usingSafeArea: true)
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
         tableView.rowHeight = 100
         
         view.addSubview(loadingView)
         loadingView.edgesToSuperview(usingSafeArea: true)
     }
+    
+    @objc private func refresh() {
+        userPreviews.removeAll()
+        userPreviewsPresenter.reset()
+        tableView.refreshControl?.endRefreshing()
+    }
 }
 
-extension UserPreviewsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension UserPreviewsViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userPreviewsCount
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let userPreviewCell: UserPreviewCell = tableView.dequeueReusableCell(for: indexPath)
         if isLoadingCell(for: indexPath) {
             userPreviewCell.configure(with: .none)
@@ -50,6 +58,15 @@ extension UserPreviewsViewController: UITableViewDataSource {
         
         return userPreviewCell
     }
+}
+
+extension UserPreviewsViewController {
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
+        {
+            let userDescriptionController = UserDescriptionViewController()
+            userDescriptionController.currentUserName = userPreviews[indexPath.row].login
+            navigationController?.pushViewController(userDescriptionController, animated: true)
+        }
 }
 
 extension UserPreviewsViewController: UITableViewDataSourcePrefetching {

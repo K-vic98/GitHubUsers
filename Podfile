@@ -11,4 +11,5 @@ target 'GitHubUsers' do
   pod 'Kingfisher'
   pod 'Reusable'
   pod 'TinyConstraints'
+  pod 'Swinject'
 end

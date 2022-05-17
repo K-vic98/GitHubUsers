@@ -4,7 +4,13 @@ import UIKit
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        true
+        
+        container.register(UsersRepo.self)
+                { _ in
+                    return UserRepoImplementation()
+                }.inObjectScope(.container)
+        
+        return true
     }
     
     // MARK: UISceneSession Lifecycle

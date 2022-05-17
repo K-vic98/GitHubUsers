@@ -10,11 +10,11 @@ struct UserPreview: Decodable {
     let avatarUrl: URL
 }
 
-struct User: Decodable {
+struct UserDescription: Decodable {
     let avatarUrl: URL
     let name: String
-    let email: String
-    let company: String
+    let email: String?
+    let company: String?
     let following: Int
     let followers: Int
 }

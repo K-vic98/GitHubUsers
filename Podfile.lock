@@ -19,6 +19,7 @@ PODS:
     - Reusable/View (= 4.1.2)
   - Reusable/Storyboard (4.1.2)
   - Reusable/View (4.1.2)
+  - Swinject (2.8.1)
   - TinyConstraints (4.0.2)
 
 DEPENDENCIES:
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - Moya
   - PromiseKit
   - Reusable
+  - Swinject
   - TinyConstraints
 
 SPEC REPOS:
@@ -35,6 +37,7 @@ SPEC REPOS:
     - Moya
     - PromiseKit
     - Reusable
+    - Swinject
     - TinyConstraints
 
 SPEC CHECKSUMS:
@@ -43,8 +46,9 @@ SPEC CHECKSUMS:
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   PromiseKit: ee485df3d4dc570594d7e7aecae6352697dc6a4c
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
+  Swinject: 97112918bd7e0785dc2df7036213f3c8cbba6586
   TinyConstraints: 7b7ccc0c485bb3bb47082138ff28bc33cd49897f
 
-PODFILE CHECKSUM: 3f4d3786284a968cadb4f221530546b64ca510d5
+PODFILE CHECKSUM: 0c77ecfd928d252326e46a483219055b35156d8a
 
 COCOAPODS: 1.11.3

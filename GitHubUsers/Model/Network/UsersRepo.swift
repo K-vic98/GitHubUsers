@@ -25,15 +25,15 @@ final class UserRepoImplementation: UsersRepo {
         }
     }
     
-    func getUser(name: String) -> Promise<User> {
-        return Promise<User> { [weak self] seal in
+    func getUser(name: String) -> Promise<UserDescription> {
+        return Promise<UserDescription> { [weak self] seal in
             self?.provider.request(.getUser(userName: name)) { result in
                 switch result {
                     case .success(let response):
                         do {
                             let jsonDecoder = JSONDecoder()
                             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                            let user = try jsonDecoder.decode(User.self, from: response.data)
+                            let user = try jsonDecoder.decode(UserDescription.self, from: response.data)
                             seal.fulfill(user)
                         } catch {
                             seal.reject(error)
@@ -48,5 +48,5 @@ final class UserRepoImplementation: UsersRepo {
 
 protocol UsersRepo {
     func getUsers(lastUploadedUser: Int) -> Promise<[UserPreview]>
-    func getUser(name: String) -> Promise<User>
+    func getUser(name: String) -> Promise<UserDescription>
 }

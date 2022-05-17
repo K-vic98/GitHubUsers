@@ -1,7 +1,9 @@
 import Foundation
+import PromiseKit
 
 fileprivate var currentUserPreviewsCount = 0
 fileprivate var lastUploadedUser = 0
+fileprivate var getUsersRequests = [Int: Promise<[UserPreview]>]()
 
 fileprivate func calculateIndexPathsToReload(from newUserPreviews: Int) -> [IndexPath] {
     let startIndex = currentUserPreviewsCount - newUserPreviews
@@ -19,9 +21,14 @@ final class UserPreviewsPresenter {
     }
     
     func getUsers() {
-        usersRepo.getUsers(lastUploadedUser: lastUploadedUser)
+        guard getUsersRequests[lastUploadedUser] == nil else { return }
+        
+        let promise = usersRepo.getUsers(lastUploadedUser: lastUploadedUser)
+        
+        getUsersRequests[lastUploadedUser] = promise
+        
+        promise
             .done { [weak self] userPreviews in
-                print(lastUploadedUser)
                 self?.userPreviewsView?.setUsers(newUsers: userPreviews)
                 currentUserPreviewsCount += userPreviews.count
                 
@@ -35,14 +42,25 @@ final class UserPreviewsPresenter {
                 guard let lastUserPreview = userPreviews.last else { return }
                 lastUploadedUser = lastUserPreview.id
             }
+            .ensure {
+                getUsersRequests.removeValue(forKey: lastUploadedUser)
+            }
             .catch { [weak self] error in
                 self?.userPreviewsView?.reportAboutMistake(mistake: error.localizedDescription)
             }
     }
+    
+    func reset() {
+        currentUserPreviewsCount = 0
+        lastUploadedUser = 0
+    }
 }
 
-protocol UserPreviewsView: AnyObject {
+protocol ErrorView: AnyObject {
+    func reportAboutMistake(mistake: String)
+}
+
+protocol UserPreviewsView: ErrorView {
     func setUsers(newUsers: [UserPreview])
     func updatePresentation(with newIndexPathsToReload: [IndexPath]?)
-    func reportAboutMistake(mistake: String)
 }
